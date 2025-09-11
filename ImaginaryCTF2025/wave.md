@@ -19,6 +19,6 @@ More on **exiftool** and installation instructions for Kali Linux can be found [
 
 Running the command `exiftool wave.wav` on the downloaded file returns file metadata including file type, permissions, etc. Looking closer we can see the flag is in the **Comment** field.
 
-![Get the flag using exiftool.](/screenshots/wave_solved.png)
+![Get the flag using exiftool.](/CTF_Writeups/screenshots/wave_solved.png)
 
 Challenge solved! :sunglasses:
