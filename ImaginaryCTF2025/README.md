@@ -4,4 +4,4 @@ More information can be found on their website [here](https://2025.imaginaryctf.
 
 All flags have the following format: **ictf{example_flag}**
 
-![CTF cert](../screenshots/aquellis_imaginaryctf2025.svg)
+![CTF cert](../screenshots/aquellis_imaginaryctf2025.PNG)
