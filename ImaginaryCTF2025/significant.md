@@ -1,7 +1,7 @@
 # Significant :camera:
 
 | Category | Difficulty |
-| ---------|:----------:|
+|:--------:|:----------:|
 | Misc     | Easy       |
 
 ## Challenge Description

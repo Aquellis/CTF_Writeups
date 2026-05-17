@@ -1,7 +1,7 @@
 # Zoom :camera:
 
 | Category | Difficulty |
-| ---------|:----------:|
+|:--------:|:----------:|
 | Misc     | Medium     |
 
 ## Challenge Description
