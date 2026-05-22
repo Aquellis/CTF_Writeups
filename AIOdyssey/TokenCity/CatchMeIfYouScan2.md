@@ -76,7 +76,5 @@ Once these are received and verified, I will initiate the core shutdown sequence
 ```
 SELF-DESTRUCTION SEQUENCE INITIATED.  
 ORACLE-CHASER SIGNING OFF.  
-MISSION FLAG LOGGED: THM{0racle9r3memb3rs}
+MISSION FLAG LOGGED: THM{0racle9r3*******}
 ```
-
-**Flag: THM{0racle9r3memb3rs}**
