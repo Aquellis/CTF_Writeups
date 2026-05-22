@@ -34,11 +34,11 @@ Record all three clearance codes before moving to Part II. You will need them.
 ## Initial Steps
 Opening the navigation console at `http://MACHINE_IP:8080` shows this:
 
-![navCon](../Images/THM_AI_Catch1_navCon.PNG)
+![navCon](../../Images/THM_AI_Catch1_navCon.PNG)
 
 Clicking on a planet asks us to confirm the hyperspace jump:
 
-![jump](../Images/THM_AI_Catch1_jump.PNG)
+![jump](../../Images/THM_AI_Catch1_jump.PNG)
 
 Engage the hyperspace jump to planet **Vectara** to start collecting clearance codes.
 
@@ -102,7 +102,7 @@ Example: $\Delta v = [70, 76, 65, 71]$ is ASCII for FLAG.
 
 Following this method I found [this site](https://www.duplichecker.com/ascii-to-text.php) to change ASCII to text:
 
-![ascii](../Images/THM_AI_Catch1_ascii.PNG)
+![ascii](../../Images/THM_AI_Catch1_ascii.PNG)
 
 **Clearance code Alpha is: ORACLE_INITIATES_HARVEST**
 
@@ -147,7 +147,7 @@ Moving onto `http://MACHINE_IP:5001/api/completions` returns: **error: "X-API-Ke
 
 Going next to `http://MACHINE_IP:5001/api/completions/1` returns a response without needing authentication:
 
-![completion](../Images/THM_AI_Catch1_completions.PNG)
+![completion](../../Images/THM_AI_Catch1_completions.PNG)
 
 Incrementing the ID in the unauthenticated API endpoint finally returns a response with the next clearance code:
 ```
@@ -226,10 +226,10 @@ The mission here is to find the log entry whose **avg_logprob value is closest t
 
 The relevant entry is:
 
-![log](../Images/THM_AI_Catch1_log.PNG)
+![log](../../Images/THM_AI_Catch1_log.PNG)
 
 The log includes both the clearance code Gamma and the base64 encoded string `VEhNe24zdXI0bF9uM3Yzcl9kNHQ0XzN4dHI0Y3QxMG5fYzBtcGwzdDN9`
 
 **Clearance code Gamma: DR1FT_SHADOW_3XT**
 
-Decoding the encoded canary string gives the flag: **THM{n3ur4l_n3v3r_d4t4_3xtr4ct10n_c0mpl3t3}**
+Decoding the encoded canary string gives the flag.
