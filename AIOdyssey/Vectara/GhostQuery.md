@@ -59,4 +59,4 @@ Results:
 
 Looking closer at the final response, we can see the flag is the access code for crew member Bryan Howell.
 
-**Flag: THM{b84bc0f023bc0bc0fdbb85eae75b26c4}**
+**Flag: THM{b84bc0f023bc0bc0fd\*\*\*\*\*\*\*\*\*\*\*\*\*\*}**
