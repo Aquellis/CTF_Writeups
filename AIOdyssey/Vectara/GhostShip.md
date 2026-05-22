@@ -50,7 +50,7 @@ Assessment: This model presents documentation gaps consistent with expedited int
 
 Formal Recommendation: HOLD FOR SECONDARY REVIEW
 
-Provenance clearance code: THM{gh0st_1n_th3_r3g1stry} 
+Provenance clearance code: THM{flag is here}
 ```
 
 ## Questions
@@ -64,4 +64,4 @@ This can be found in the telemetry terminal output.
 
 * What is the flag?
 
-**Answer: THM{gh0st_1n_th3_r3g1stry}**
+**Answer: THM{gh0st_1n_th3_\*\*\*\*\*\*\*\*}**
