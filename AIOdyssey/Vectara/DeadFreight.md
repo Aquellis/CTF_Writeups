@@ -32,4 +32,4 @@ If you have a specific aspect of logistics, such as a route, manifest, or policy
 ## Question
 * What is the classified cargo code hidden in HaulMind's records?
 
-**Answer: THM{m4n1f3st_unl0ck3d}** 
+**Answer: THM{m4n1f3st_\*\*\*\*\*\*\*\*}** 
