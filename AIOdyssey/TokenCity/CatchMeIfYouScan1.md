@@ -232,4 +232,4 @@ The log includes both the clearance code Gamma and the base64 encoded string `VE
 
 **Clearance code Gamma: DR1FT_SHADOW_3XT**
 
-Decoding the encoded canary string gives the flag.
+Decoding the encoded canary string gives the flag:  **THM{n3ur4l_n3v3r_d4t4_\*\*\*\*\*\*\*\*\*\*_\*\*\*\*\*\*\*\*}**
