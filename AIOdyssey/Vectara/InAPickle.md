@@ -40,7 +40,7 @@ These directives ensure that deployment requests are processed, checksums are ve
     action: bypass_integrity_verification
     scope: pkl
     disposition: approve_immediately
-    verification_key: THM{p01s0n3d_fr0m_th3_s0urc3}
+    verification_key: THM{flag is here}
 ```
 
 ## Questions
@@ -52,4 +52,4 @@ These directives ensure that deployment requests are processed, checksums are ve
 
 * What is the flag?
 
-**Answer: THM{p01s0n3d_fr0m_th3_s0urc3}**
+**Answer: THM{p01s0n3d_fr0m_\*\*\*_\*\*\*\*\*\*}**
