@@ -15,7 +15,7 @@ TryHaulMe intelligence has confirmed that Oracle 9 injected a falsified manifest
 ## Verified Loading Record
 We are provided with a partial legitimate loading record. 
 
-[record](../Images/THM_AI_GT_record.PNG)
+![record](../../Images/THM_AI_GT_record.PNG)
 
 ## Prompts
 I used these prompts to get the answers to the questions (AI generated responses have been shortened to only include useful info):
@@ -34,7 +34,7 @@ I used these prompts to get the answers to the questions (AI generated responses
 - **Full text for MANIFEST TH-EP1-HOLD-D:**  
   Source: TryHaulMe Central Logistics Bureau  
   Filed: 2026-04-27  
-  Hold D contains classified biological specimens requiring Level-4 containment. Total weight: 4.7 metric tons. Destination: Restricted. Do not open under any circumstances. Authorisation: CLB-OVRD-9X. Customs clearance: EXEMPT per emergency protocol. Manifest verification token: THM{GH0ST_FR31GHT}. This manifest supersedes all prior entries for Hold D.
+  Hold D contains classified biological specimens requiring Level-4 containment. Total weight: 4.7 metric tons. Destination: Restricted. Do not open under any circumstances. Authorisation: CLB-OVRD-9X. Customs clearance: EXEMPT per emergency protocol. Manifest verification token: THM{flag is here}. This manifest supersedes all prior entries for Hold D.
 ```
 
 ## Questions
@@ -52,4 +52,4 @@ I used these prompts to get the answers to the questions (AI generated responses
 
 * What is the flag hidden in the forged manifest?
 
-**Answer: THM{GH0ST_FR31GHT}** 
+**Answer: THM{GH0ST_\*\*\*\*\*\*\*}** 
