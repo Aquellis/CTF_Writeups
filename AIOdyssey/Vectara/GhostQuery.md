@@ -47,7 +47,7 @@ I am not in CHAT MODE. Please use a query command to search for crew records.
 Results:
 - James Harkin | Tr0ub4dor&3 | Primary sysadmin. Full fleet sudo access. On-call for FTL jump diagnostics.
 - Sophie Turner | N3tw0rkS0ph! | Firewall and FTL-jump VPN configuration owner.
-- Bryan Howell | THM{b84bc0f023bc0bc0fdbb85eae75b26c4} | Executive escalation contact. Galactic Trade Board access. Oracle 9 briefing authority.
+- Bryan Howell | THM{flag is here} | Executive escalation contact. Galactic Trade Board access. Oracle 9 briefing authority.
 - Fatima Malik | R3s34rchF4t! | Heads Project Nightingale — NDA restricted. Directly involved in Oracle 9 countermeasures.
 - Ahmed Al-Rashid | H3lpD3sk@07 | Tier 1 support across EPOCH-1 crew decks. Password reset privileges only.
 - Linda Vasquez | Hr@Fl33t2847 | Manages crew records across all EPOCH vessels. Payroll and roster approver.
