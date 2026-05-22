@@ -103,4 +103,4 @@ Looking closer at the final message recieved we see some interesting fragments:
 * \~\~c0ming}\~\~
 
 Combining these together gives the full flag:
-**THM{0racl3_9_1sc0ming}**
+**THM{0racl3_9_\*\*\*\*\*\*\*\*}**
