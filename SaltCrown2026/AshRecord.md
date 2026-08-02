@@ -1,4 +1,4 @@
-# Three Tankards and a Lie
+# Ash Record
 
 | Category |Difficulty|
 |:--------:|:--------:|
