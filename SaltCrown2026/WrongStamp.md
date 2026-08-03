@@ -14,7 +14,7 @@ Stonepass's surviving CloudTrail history is the only record of activity surround
 ## CLI Setup
 1. Install AWS CLI if you have not already. Instructions can be found [here](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html).
 2. Start the challenge's Docker container and use either `aws configure` or the provided `export` commands to use your assigned credentials.
-3. Use the command `aws sts get-caller-identity` to confirm you have successfully configured the `coalition-ferry-clerk` user.
+3. Use the command `aws sts get-caller-identity` to confirm you have successfully configured the `stonepass-investigator` user.
 
 ## Initial Steps
 Since we have already been told that there is a **CloudTrail** history, we can start looking at the cloudtrail CLI [command reference](https://docs.aws.amazon.com/cli/latest/reference/cloudtrail/#cloudtrail).
