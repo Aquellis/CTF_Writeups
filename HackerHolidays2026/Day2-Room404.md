@@ -25,7 +25,7 @@ There is one finding: http://[MACHINE IP]:8080/.git/HEAD
 
 Opening this in a web browser shows an index listing of the git repo:
 
-![day2_index](./Images/HH26_day2_index.PNG)
+![day2_index](../Images/HH26_day2_index.PNG)
 
 ## Finding the Flag
 I had to research how to dump the files behind an exposed `.git/HEAD` file. Doing so, I came across the tool [git-dumper](https://github.com/arthaud/git-dumper), which will "dump a git repository from a website".
@@ -43,7 +43,7 @@ I dumped the repository using the command `git-dumper http://[MACHINE IP]:8080/.
 
 Navigating to the output directory and running `ls` will list all the files we've discovered. After that, we can try reading the file contents with `cat`.
 
-![day2_ls](../Images/HH26_day2_ls.md)
+![day2_ls](../Images/HH26_day2_ls.PNG)
 
 We can find the flag inside the contents of the repo's README file.
 
