@@ -7,8 +7,6 @@
 **Skills learned:**
 * Gathering sensitive data from social media profiles
 
-![day0_poster](../Images/HH26_day0_poster.PNG)
-
 ## Concierge Briefing
 Before you ever set foot on the property, you decide to do a little homework on the Byte Lotus Hotel. The brochure's hero photo carries an unmistakable AI fingerprint, and the account behind it leads somewhere the hotel never intended you to look.
 Follow the trail, uncover the hidden connection, and find what was left behind.

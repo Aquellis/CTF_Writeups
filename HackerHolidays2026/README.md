@@ -8,3 +8,17 @@ The guests are hiding something. The staff is hiding something. And VERA, the AI
 More information can be found on their website [here](https://tryhackme.com/hackerholidays).
 
 ![HH26_cert](../Images/HH26_cert.png)
+
+---
+
+## Full Story
+The story behind our investigation plays out below.
+![day0_poster](../Images/HH26_day0_poster.PNG)
+
+![day1_poster](../Images/HH26_day1_poster.PNG)
+
+![day7_poster](../Images/HH26_day7_poster.PNG)
+
+![day11_poster](../Images/HH26_day11_poster.PNG)
+
+![day14_poster](../Images/HH26_day14_poster.PNG)
