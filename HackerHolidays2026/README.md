@@ -13,6 +13,7 @@ More information can be found on their website [here](https://tryhackme.com/hack
 
 ## Full Story
 The story behind our investigation plays out below.
+
 ![day0_poster](../Images/HH26_day0_poster.PNG)
 
 ![day1_poster](../Images/HH26_day1_poster.PNG)
