@@ -1,8 +1,8 @@
 # Day 8 - Towel on the Sunbed
 
-| Category  |Difficulty|
-|:---------:|:--------:|
-|    Web    |  Medium  |
+|Category|Difficulty|
+|:------:|:--------:|
+|   Web  |  Medium  |
 
 **Skills learned:**
 * Exploit race condition with Burp Suite
