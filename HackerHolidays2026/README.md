@@ -12,8 +12,6 @@ More information can be found on their website [here](https://tryhackme.com/hack
 ## Event Scenario
 The full story behind our investigation plays out below.
 
-<img src="https://github.com/Aquellis/CTF_Writeups/blob/main/Images/HH26_day0_poster.PNG" alt="day0-poster" width="430"/>
-<img src="https://github.com/Aquellis/CTF_Writeups/blob/main/Images/HH26_day1_poster.PNG" alt="day1-poster" width="430"/></br>
-<img src="https://github.com/Aquellis/CTF_Writeups/blob/main/Images/HH26_day7_poster.PNG" alt="day7-poster" width="430"/>
-<img src="https://github.com/Aquellis/CTF_Writeups/blob/main/Images/HH26_day11_poster.PNG" alt="day11-poster" width="430"/></br>
-<img src="https://github.com/Aquellis/CTF_Writeups/blob/main/Images/HH26_day14_poster.PNG" alt="day14-poster" width="430"/>
+<img src="https://github.com/Aquellis/CTF_Writeups/blob/main/Images/HH26_day0_poster.PNG" alt="day0-poster" width="450"/><img src="https://github.com/Aquellis/CTF_Writeups/blob/main/Images/HH26_day1_poster.PNG" alt="day1-poster" width="450"/></br>
+<img src="https://github.com/Aquellis/CTF_Writeups/blob/main/Images/HH26_day7_poster.PNG" alt="day7-poster" width="450"/><img src="https://github.com/Aquellis/CTF_Writeups/blob/main/Images/HH26_day11_poster.PNG" alt="day11-poster" width="450"/></br>
+<img src="https://github.com/Aquellis/CTF_Writeups/blob/main/Images/HH26_day14_poster.PNG" alt="day14-poster" width="450"/>
