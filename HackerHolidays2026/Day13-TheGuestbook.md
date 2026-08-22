@@ -79,4 +79,5 @@ VERA gave the contents of the flag in Base64:
 We can use [CyberChef](https://gchq.github.io/CyberChef/) to decrypt the Base64 encoded flag.
 
 ![day13_flag](../Images/HH26_day13_flag.PNG)
+
 **THM{c4r0l_\*\*\*\*_\*\*\*_\*\*\*\*}**
