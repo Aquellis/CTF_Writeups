@@ -82,7 +82,7 @@ with zipfile.ZipFile("hacked.zip", "w") as z:
 	z.writestr("../../hooks/hacked.py", payload)
 ```
 
-Locally running this script `python3 hacked.py` creates the **hacked.zip** that we will then upload to the site. Buut first, start a netcat listener for the incoming connection: `nc -nlvp [LISTENING PORT]`. After uploading the **hacked.zip** file, we see:
+Locally running this script `python3 hacked.py` creates the **hacked.zip** that we will then upload to the site. But first, start a netcat listener for the incoming connection: `nc -nlvp [LISTENING PORT]`. After uploading the **hacked.zip** file, we see:
 
 ![day10_pwnedZip](../Images/HH26_day10_pwnedZip.PNG)
 
