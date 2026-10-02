@@ -139,7 +139,7 @@ should be authenticated is authenticated.
 
 Opening the address given `http://MACHINE_IP:5001` shows this:
 
-![apiList](../Images/THM_AI_Catch1_apiList.PNG)
+![apiList](../../Images/THM_AI_Catch1_apiList.PNG)
 
 Starting with 'the API tells you about itself' (status): `http://MACHINE_IP:5001/api/status` returns: **auth_required: "X-API-Key header required for /api/completions"** 
 
