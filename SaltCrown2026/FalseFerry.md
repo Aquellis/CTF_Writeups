@@ -65,7 +65,7 @@ aws sts assume-role \
   --region us-east-1
 ```
 
-This can be found in the `CROSSING-7A3F` parameter. Using the command `aws sts assume-role`, we will be given the full AccessKeyd, SecretAccessKey and SessionToken for this user role. Pivot to this role using **export** commands with these new secrets.
+This can be found in the `CROSSING-7A3F` parameter. Using the command `aws sts assume-role`, we will be given the full AccessKey, SecretAccessKey and SessionToken for this user role. Pivot to this role using **export** commands with these new secrets.
 
 With our new **ferry-crossing-scanner** role, we can further dig into the `morning-crossing-order.txt` manifest and the **manifest_bucket** it's stored in. Now we need the s3api [command reference](https://docs.aws.amazon.com/cli/latest/reference/s3api/).
 
