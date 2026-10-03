@@ -1,4 +1,8 @@
-# Forensics - Watchtower Of Mists
+# Watchtower Of Mists
+
+|Category |Difficulty|
+|:-------:|:--------:|
+|Forensics|   Easy   |
 
 ## Description
 The tower’s lens, once clear for stargazing, was now veiled in thick mist. Merrin, a determined forensic investigator, climbed the spiraling stairs of Egrath’s Hollow. She found her notes strangely rearranged, marked with unknown signs. The telescope had been deliberately turned downward, focused on the burial grounds. The tower had been occupied after a targeted attack. Not a speck of dust lay on the glass, something unseen had been watching. What it witnessed changed everything. Can you help Merrin piece together what happened in the Watchtower of Mists?
@@ -14,7 +18,7 @@ forensics_watchtower_of_mists.zip
 
 ## Questions
 
-1. What is the LangFlow version in use?
+**1. What is the LangFlow version in use?**
 
 I started analyzing the pcap file by looking at the HTTP GET requests. Applying the Wireshark display filter **http.request.method == GET** we see the full list of GET requests, where one happens to point to a useful API endpoint: `/api/v1/version`.
 
@@ -41,7 +45,7 @@ content-type: application/json
 
 ---
 
-2. What is the CVE assigned to this LangFlow vulnerability?
+**2. What is the CVE assigned to this LangFlow vulnerability?**
 
 Searching for `langflow 1.2.0 cve` online gives us the answer [here](https://nvd.nist.gov/vuln/detail/CVE-2025-3248).
 
@@ -68,7 +72,7 @@ Content-Length: 222
 
 ---
 
-3. What is the name of the API endpoint exploited by the attacker to execute commands on the system?
+**3. What is the name of the API endpoint exploited by the attacker to execute commands on the system?**
 
 We discovered this while investigating task 2.
 
@@ -76,7 +80,7 @@ We discovered this while investigating task 2.
 
 ---
 
-4. What is the IP address of the attacker?
+**4. What is the IP address of the attacker?**
 
 We can find all the endpoints who have sent traffic in this capture by openging the **Statistics > Endpoints** tab. We only have two IPs included:
 * 141.101.64.3
@@ -90,7 +94,7 @@ We can confirm which of these two is the attacker by re-looking at the packet in
 
 ---
 
-5. The attacker used a persistence technique, what is the port used by the reverse shell?
+**5. The attacker used a persistence technique, what is the port used by the reverse shell?**
 
 I first tried finding this answer by looking at the ports involved in the network communication under **Statistics > IPv4 Statistics > Destinations and Ports**. This turned out to be a dead end as none of the listed ports for 188.114.96.12 appeared to be used by a reverse shell.
 
@@ -122,7 +126,7 @@ Now we can see the attacker's command to establish their reverse shell.
 
 ---
 
-6. What is the system machine hostname?
+**6. What is the system machine hostname?**
 
 Continuing to investigate that attacker's malicious POST requests, we can see the output they received:
 ```
@@ -151,7 +155,7 @@ The encoded command sent was `raise Exception(__import__("subprocess").check_out
 
 ---
 
-7. What is the Postgres password used by LangFlow?
+**7. What is the Postgres password used by LangFlow?**
 
 The LangFlow password can also be found in the **env** output in task 6: `LANGFLOW_DATABASE_URL=postgresql://langflow:LnGFlWPassword2025@postgres:5432/langflow`
 

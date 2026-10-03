@@ -1,4 +1,8 @@
-# Forensics - When The Wire Whispered
+# When The Wire Whispered
+
+|Category |Difficulty|
+|:-------:|:--------:|
+|Forensics|   Easy   |
 
 ## Description
 Brynn’s night-threads flared as connections vanished and reappeared in reverse, each route bending back like a reflection misremembered. The capture showed silent gaps between fevered bursts—packets echoing out of sequence, jittering like whispers behind glass. Eira and Cordelia now sift the capture, tracing the pattern’s cadence to learn whether it’s mere corruption… or the Hollow King learning to speak through the wire. <br>
@@ -6,8 +10,10 @@ Brynn’s night-threads flared as connections vanished and reappeared in reverse
 **Note2: Use PyRDP *git* version**
 
 **Skills learned:**
-* Network traffic decryption & analysis
-* PyRDP MiTM 
+* Decrypting TLS network traffic in Wireshark using a provided key log file
+* Extracting RDP network traffic in Wireshark and converting it to replay using PyRDP
+* Replaying RDP traffic using PyRDP to track an attacker's end-to-end activity timeline
+* Extracting an NTLM hash from a PCAP file then cracking the hash to obtain a user's password
 
 **File attachment(s):**
 ```text
@@ -20,7 +26,7 @@ forensics_when_the_wire_whispered.zip
 
 ## Additional Setup Required
 ### Tool installation
-I completed this invesigaiton on an Ubuntu 24.04.3 LTS machine.
+I completed this investigation on an Ubuntu 24.04.3 LTS machine.
 As mentioned in the notes above, we need to ensure our version of Wireshark is at least 4.6.0. Update and/or install Wireshark to match this requirement.
 
 We are also instructed to use the **git** version of the tool [PyRDP](https://github.com/GoSecure/pyrdp). I installed PyRDP inside a virtual environment using these commands: (along with installing the av package before pyrdp)
@@ -95,7 +101,7 @@ Play both of these files using headless mode: `pyrdp-player 20251020191523_192.1
 
 ## Questions
 
-1. What is the username affected by the spray?
+**1. What is the username affected by the spray?**
 
 We can see the affected username by playing the RDP session with PyRDP GUI:
 
@@ -105,7 +111,7 @@ We can see the affected username by playing the RDP session with PyRDP GUI:
 
 ---
 
-2. What is the password for that username?
+**2. What is the password for that username?**
 
 I used this [video guide](https://www.youtube.com/watch?v=mu7-naA0muc) to extract NTLM hash values from our packet capture file.
 
@@ -121,7 +127,7 @@ which cracks the hash to: Mlamp!J1
 
 ---
 
-3. What is the website the victim is currently browsing? (TLD only: google.com)
+**3. What is the website the victim is currently browsing? (TLD only: google.com)**
 
 Continuing to play the file **20251020191524** with the PyRDP GUI we can see the website being browsed.
 
@@ -131,7 +137,7 @@ Continuing to play the file **20251020191524** with the PyRDP GUI we can see the
 
 ---
 
-4. What is the username:password combination for website `http://barrowick.htb`?
+**4. What is the username:password combination for website `http://barrowick.htb`?**
 
 We can see CLIPBOARD DATA from the **pyrdp-player** headless mode output. Scrolling to see data related to the domain `barrowick.htb` shows:
 

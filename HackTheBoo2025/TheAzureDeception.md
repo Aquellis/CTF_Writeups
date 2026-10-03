@@ -1,4 +1,8 @@
-# OSINT - The Azure Deception
+# The Azure Deception
+
+|Category| Difficulty|
+|:------:|:---------:|
+|  OSINT |   Medium  |
 
 ## Description
 Shortly after the Door Without Handles began moving, someone sent Brynn a taunting message through the council's communication channels. It appeared to come from Microsoft's own security team—the address read azuresecuritycenter@onmicrosoft.com—but the words dripped with mockery:
@@ -10,7 +14,8 @@ The domain seemed legitimate at first—onmicrosoft.com is genuine Microsoft ter
 Even the most official-looking doors can lead to hollowed places.Flag Format: HTB{Operation_Name} Example (Fictional): HTB{Operation_Midnight} Important: Use underscore _ between words Capitalize first letter of each word Include "Operation" if it's part of the name
 
 **Skills learned:**
-* Threat Intelligence
+* Utilizing publicly available information to track phishing campaign IoCs
+* Tracking adversarial campaigns by cross-referencing threat intelligence from MITRE ATT&CK and other sources
 
 ## Finding the Flag
 
