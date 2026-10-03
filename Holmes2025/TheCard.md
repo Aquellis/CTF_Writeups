@@ -8,8 +8,8 @@
 Holmes receives a breadcrumb from Dr. Nicole Vale - fragments from a string of cyber incidents across Cogwork-1. Each lead ends the same way: a digital calling card signed JM.
 
 **Skills learned:**
-* Log analysis
-* IoC tracking
+* Analyzing web server access logs, application logs and WAF events to trace a compromise against a honeypot
+* Utilizing CTI platforms to track IoCs and correlate a threat actor's tooling across multiple campaigns
 
 **File attachment(s):**
 ```text
@@ -20,7 +20,7 @@ The_Card.zip
 ```
 
 ## Questions
-1. Analyze the provided logs and identify what is the first User-Agent used by the attacker against Nicole Vale's honeypot.
+**1. Analyze the provided logs and identify what is the first User-Agent used by the attacker against Nicole Vale's honeypot.**
 
 Analyzing the **access.log** file, we see GET and POST requests made to the honeypot. Looking at the first few entries in the file gives us the User-Agent.
 
@@ -40,7 +40,7 @@ Analyzing the **access.log** file, we see GET and POST requests made to the hone
 
 ---
 
-2. It appears the threat actor deployed a web shell after bypassing the WAF. What is the file name?
+**2. It appears the threat actor deployed a web shell after bypassing the WAF. What is the file name?**
 
 Analyzing the **waf.log** file, we see the rule WEBSHELL_EXECUTION was triggered:
 ```
@@ -52,7 +52,7 @@ Analyzing the **waf.log** file, we see the rule WEBSHELL_EXECUTION was triggered
 
 ---
 
-3. The threat actor also managed to exfiltrate some data. What is the name of the database that was exfiltrated?
+**3. The threat actor also managed to exfiltrate some data. What is the name of the database that was exfiltrated?**
 
 Digging further into the **waf.log** file, we see the rule DATABASE_DOWNLOAD was triggered:
 ```
@@ -63,7 +63,7 @@ Digging further into the **waf.log** file, we see the rule DATABASE_DOWNLOAD was
 
 ---
 
-4. During the attack, a seemingly meaningless string seems to be recurring. Which one is it?
+**4. During the attack, a seemingly meaningless string seems to be recurring. Which one is it?**
 
 If you look closer at the logs/answers given in the previous tasks, the string appears in each one.
 
@@ -71,7 +71,7 @@ If you look closer at the logs/answers given in the previous tasks, the string a
 
 ---
 
-5. OmniYard-3 (formerly Scotland Yard) has granted you access to its CTI platform. Browse to the first IP:port address and count how many campaigns appear to be linked to the honeypot attack.
+**5. OmniYard-3 (formerly Scotland Yard) has granted you access to its CTI platform. Browse to the first IP:port address and count how many campaigns appear to be linked to the honeypot attack.**
 
 The Sherlock provides three separate IP:PORT pairs. Open the web browser and navigate to the target host 00.
 
@@ -83,7 +83,7 @@ Zooming in on the "JM" organization, we can clearly see how many campaigns they 
 
 ---
 
-6. How many tools and malware in total are linked to the previously identified campaigns?
+**6. How many tools and malware in total are linked to the previously identified campaigns?**
 
 Pivot to highlighting all the **Tool** and **Malware** entities associated with the five JM campaigns.
 
@@ -91,7 +91,7 @@ Pivot to highlighting all the **Tool** and **Malware** entities associated with 
 
 ---
 
-7. It appears that the threat actor has always used the same malware in their campaigns. What is its SHA-256 hash?
+**7. It appears that the threat actor has always used the same malware in their campaigns. What is its SHA-256 hash?**
 
 To find the hash of the malware used, do the following:
 * select a malware entity part of one of the JM campaigns
@@ -104,7 +104,7 @@ To find the hash of the malware used, do the following:
 
 ---
 
-8. Browse to the second IP:port address and use the CogWork Security Platform to look for the hash and locate the IP address to which the malware connects. (Credentials: nvale/CogworkBurning!)
+**8. Browse to the second IP:port address and use the CogWork Security Platform to look for the hash and locate the IP address to which the malware connects. (Credentials: nvale/CogworkBurning!)**
 
 Use the web browser to navigate to the target host 01. Login using the provided credentials and search the hash found in task 6.
 
@@ -116,7 +116,7 @@ The malicious IP address can be found under the **Network Communication** sectio
 
 ---
 
-9. What is the full path of the file that the malware created to ensure its persistence on systems?
+**9. What is the full path of the file that the malware created to ensure its persistence on systems?**
 
 In the **Scan Results** page, click the **View Details** button. The full file path can be found under the **Behaviorial Analysis** section.
 
@@ -126,7 +126,7 @@ In the **Scan Results** page, click the **View Details** button. The full file p
 
 ---
 
-10. Browse to the third IP:port address and use the CogNet Scanner Platform to discover additional details about the TA's infrastructure. How many open ports does the server have?
+**10. Browse to the third IP:port address and use the CogNet Scanner Platform to discover additional details about the TA's infrastructure. How many open ports does the server have?**
 
 Use the web browser to navigate to the target host 02. Enter the malicious IP to find more intel on it.
 
@@ -136,7 +136,7 @@ Use the web browser to navigate to the target host 02. Enter the malicious IP to
 
 ---
 
-11. Which organization does the previously identified IP belong to?
+**11. Which organization does the previously identified IP belong to?**
 
 Clicking the **Details** button in the search finding to open the Investigation window with further intel on the target.
 
@@ -146,7 +146,7 @@ The organization name can be found in the **Overview** tab under **Network Infor
 
 ---
 
-12. One of the exposed services displays a banner containing a cryptic message. What is it?
+**12. One of the exposed services displays a banner containing a cryptic message. What is it?**
 
 In the same Investigation window, open the **Services** tab which provides more details on the services running on open ports: port, service, protocol, version & banner.
 

@@ -8,8 +8,9 @@
 LeStrade passes a disk image to Holmes. It's one of the identified breach points, now showing abnormal CPU activity and anomalies in process logs.
 
 **Skills learned:**
-* Windows Event analysis
-* Windows KAPE forensics
+* Analyzing Windows event logs using Windows Event Viewer to reconstruct an attacker's execution sequence and persistence
+* Analyzing Windows Registry hives using Registry Explorer to uncover unauthorized system modifications
+* Mapping adversarial behavior to MITRE ATT&CK techniques
 
 **File attachment(s):**
 ```text
@@ -19,7 +20,7 @@ EnduringEcho.zip
 ```
 
 ## Questions
-1. What was the first (non cd) command executed by the attacker on the host?
+**1. What was the first (non cd) command executed by the attacker on the host?**
 
 I started investigating by looking at the machine's Security logs located in *C:\Windows\System32\winevt\Logs\Security.evtx* using the **Event Viewer**. Filtering for events with the ID **4688** (Process Creation) and start searching for suspicious processes.
 
@@ -29,7 +30,7 @@ I started investigating by looking at the machine's Security logs located in *C:
 
 ---
 
-2. Which parent process (full path) spawned the attacker’s commands?
+**2. Which parent process (full path) spawned the attacker’s commands?**
 
 Continuing to investigate suspicious processes after task 1, we come upon a process creating a scheduled task:
 
@@ -41,7 +42,7 @@ The parent process can be found in the field **ParentProcessName**
 
 ---
 
-3. Which remote-execution tool was most likely used for the attack?
+**3. Which remote-execution tool was most likely used for the attack?**
 
 We have two valuable pieces of information that point us to what tool was used:
 * WmiPrvSE.exe spawned a child process cmd.exe
@@ -53,7 +54,7 @@ Researching these artifacts, we find that they are left by **wmiexec.py**.
 
 ---
 
-4. What was the attacker’s IP address?
+**4. What was the attacker’s IP address?**
 
 Pivoting to search for Security event logs by searching for the malicious parent process  ‘C:\Windows\System32\wbem\WmiPrvSE.exe’, we discover an IP address being added to /etc/hosts.
 
@@ -63,7 +64,7 @@ Pivoting to search for Security event logs by searching for the malicious parent
 
 ---
 
-5. The attacker established multiple persistence mechanisms. What is set as the name of the earliest one created?
+**5. The attacker established multiple persistence mechanisms. What is set as the name of the earliest one created?**
 
 We already found in task 1 that the attacker created a scheduled task:
 ```
@@ -78,7 +79,7 @@ We can determine the task's name by looking at the **/tn** parameter.
 
 ---
 
-6. Identify the script executed by the persistence mechanism.
+**6. Identify the script executed by the persistence mechanism.**
 
 Looking again at the command creating the scheduled task, we can see the filename that is set to execute after the **-File** parameter.
 
@@ -86,7 +87,7 @@ Looking again at the command creating the scheduled task, we can see the filenam
 
 ---
 
-7. What local account did the attacker create?
+**7. What local account did the attacker create?**
 
 Looking at the contents of the malicious JM.ps1 file we find:
 ```
@@ -125,7 +126,7 @@ We see a list of 'potential usernames', but we can go back to the Security event
 
 ---
 
-8. What domain name did the attacker use for credential exfiltration?
+**8. What domain name did the attacker use for credential exfiltration?**
 
 Back in task 4 we discovered a host being added to the /etc/hosts file:
 ```
@@ -138,7 +139,7 @@ The domain used for credential exfiltration is given along side its IP.
 
 ---
 
-9. What password did the attacker's script generate for the newly created user?
+**9. What password did the attacker's script generate for the newly created user?**
 
 Looking back at the logic of the malicious script **JM.ps1**, we see how the user's password was created:
 ```
@@ -153,11 +154,11 @@ The timestamp of the user creation log is 08/25/2025 02:05:09. Converting this t
 
 ---
 
-10. What was the IP address of the internal system the attacker pivoted to?
+**10. What was the IP address of the internal system the attacker pivoted to?**
 
 We found this IP address in two different places: Security event logs and .ssh/known_hosts
 
-**Security event logs**:
+**Security event logs:**
 
 Filter these logs using the event ID 4688 and continue searching through the logs to find suspicious processes:
 
@@ -165,7 +166,7 @@ Filter these logs using the event ID 4688 and continue searching through the log
 
 The attacker added a portproxy connecting to the address 192.168.1.101.
 
-**The_Enduring_Echo\The_Enduring_Echo\C\Users\Administrator\.ssh\known_hosts:**
+**The_Enduring_Echo\The_Enduring_Echo\C\Users\Administrator\\.ssh\known_hosts:**
 ```
 192.168.1.101 ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBGjmtTU4ZUCw5B2ShEblTYP+LPsaSWZcEndPl1fcZVOjEm1lkYpO9AmafttpZNM0xmG9K0gp9xcKFTcS7Xz89x4=
 ```
@@ -174,7 +175,7 @@ The attacker added a portproxy connecting to the address 192.168.1.101.
 
 ---
 
-11. Which TCP port on the victim was forwarded to enable the pivot?
+**11. Which TCP port on the victim was forwarded to enable the pivot?**
 
 In the Security event log pasted above we can see noth the IP address and the port that was pivoted to.
 
@@ -182,7 +183,7 @@ In the Security event log pasted above we can see noth the IP address and the po
 
 ---
 
-12. What is the full registry path that stores persistent IPv4→IPv4 TCP listener-to-target mappings?
+**12. What is the full registry path that stores persistent IPv4→IPv4 TCP listener-to-target mappings?**
 
 Opening the SYSTEM registry hive using the **Registry Explorer** tool we can see the malicious PortProxy added.
 
@@ -190,7 +191,7 @@ Opening the SYSTEM registry hive using the **Registry Explorer** tool we can see
 
 ---
 
-13. What is the MITRE ATT&CK ID associated with the previous technique used by the attacker to pivot to the internal system?
+**13. What is the MITRE ATT&CK ID associated with the previous technique used by the attacker to pivot to the internal system?**
 
 Searching the MITRE framework for **portproxy** brings us [here](https://attack.mitre.org/techniques/T1090/001/).
 
@@ -198,7 +199,7 @@ Searching the MITRE framework for **portproxy** brings us [here](https://attack.
 
 ---
 
-14. Before the attack, the administrator configured Windows to capture command line details in the event logs. What command did they run to achieve this?
+**14. Before the attack, the administrator configured Windows to capture command line details in the event logs. What command did they run to achieve this?**
 
 Some of the commands executed by the administrator can be found in the **The_Enduring_Echo\C\Users\Administrator\AppData\Roaming\Microsoft\Windows\PowerShell\PSReadline\ConsoleHost_history.txt** file, including the command mentioned here.
 

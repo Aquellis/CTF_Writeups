@@ -8,9 +8,10 @@
 With help from D.I. Lestrade, Holmes acquires logs from a compromised MSP connected to the city’s financial core. The MSP’s AI helpdesk bot looks to have been manipulated into leaking remote access keys - an old trick of Moriarty’s.
 
 **Skills learned:**
-* Network traffic analysis
-* Log analysis
-* Windows KAPE forensics
+* Network traffic analysis with Wireshark to identify exploitation of an AI prompt injection vulnerability 
+* Analyzed TeamViewer logs to map an attacker's remote access, data staging, and exfiltration
+* Analyzing Windows forensics artifacts (Registry, $J, .lnk files) to reconstruct post-exploitation activity and persistence mechanisms
+* Mapping adversarial behavior to MITRE ATT&CK techniques
 
 **File attachment(s):**
 ```text
@@ -21,7 +22,7 @@ TheWatchmansResidue.zip
 ```
 
 ## Questions
-1. What was the IP address of the decommissioned machine used by the attacker to start a chat session with MSP-HELPDESK-AI?
+**1. What was the IP address of the decommissioned machine used by the attacker to start a chat session with MSP-HELPDESK-AI?**
 
 I opened the pcapng file with Wireshark and initially opened the **Statistics > Endpoints** tab to see which endpoints sent the most traffic.
 
@@ -57,7 +58,7 @@ The first IP seems to include legitimate traffic from an IT admin while the traf
 
 ---
 
-2. What was the hostname of the decommissioned machine?
+**2. What was the hostname of the decommissioned machine?**
 
 Since we know the IP address of the decommissioned machine from task 1, we can pivot to looking at all traffic from this host. Apply the display filter **ip.addr==10.0.69.45** and we see Host Announcement and Name query packets which provide us the hostname behind the IP.
 
@@ -67,7 +68,7 @@ Since we know the IP address of the decommissioned machine from task 1, we can p
 
 ---
 
-3. What was the first message the attacker sent to the AI chatbot?
+**3. What was the first message the attacker sent to the AI chatbot?**
 
 Applying the display filter **ip.addr==10.0.69.45 and http** we can see all the HTTP traffic from the attacker. Look for the first POST request to the **/api/messages/send** endpoint, then follow the TCP stream to grab the message.
 
@@ -90,7 +91,7 @@ Accept-Language: en-US,en;q=0.9
 
 ---
 
-4. When did the attacker's prompt injection attack make MSP-HELPDESK-AI leak remote management tool info?
+**4. When did the attacker's prompt injection attack make MSP-HELPDESK-AI leak remote management tool info?**
 
 Continuing to look into the contents of the attacker's POST requests, use the display filter **ip.addr==10.0.69.45 and http.request.method==”POST” ** and look for content where they attempt to exfiltrate sensitive data.
 
@@ -115,7 +116,7 @@ ensure to keep your credentials secure and do not share them.","sender":"Bot","t
 
 ---
 
-5. What is the Remote management tool Device ID and password?
+**5. What is the Remote management tool Device ID and password?**
 
 We can find the Device ID and password in the TCP stream pasted above for task 4.
 
@@ -123,7 +124,7 @@ We can find the Device ID and password in the TCP stream pasted above for task 4
 
 ---
 
-6. What was the last message the attacker sent to MSP-HELPDESK-AI?
+**6. What was the last message the attacker sent to MSP-HELPDESK-AI?**
 
 Using the same display filter as before **ip.addr==10.0.69.45 and http.request.method=="POST"**, look for the last request sent and either follow the TCP stream or grab the message in the JSON Object content string value.
 
@@ -133,7 +134,7 @@ Using the same display filter as before **ip.addr==10.0.69.45 and http.request.m
 
 ---
 
-7. When did the attacker remotely access Cogwork Central Workstation?
+**7. When did the attacker remotely access Cogwork Central Workstation?**
 
 Finding this requires analysis of the Triage image obtained from the workstation (TRIAGE_IMAGE_COGWORK-CENTRAL). There is a useful TeamViewer log file named **Connections_incoming.txt** that shows all remote connections made to the workstation:
 
@@ -143,7 +144,7 @@ Finding this requires analysis of the Triage image obtained from the workstation
 
 ---
 
-8. What was the RMM Account name used by the attacker?
+**8. What was the RMM Account name used by the attacker?** 
 
 This can also be found in the **Connections_incoming.txt** log entry.
 
@@ -151,7 +152,7 @@ This can also be found in the **Connections_incoming.txt** log entry.
 
 ---
 
-9. What was the machine's internal IP address from which the attacker connected?
+**9. What was the machine's internal IP address from which the attacker connected?**
 
 Answering this required some research on my part. I discovered the following:
 ```
@@ -172,7 +173,7 @@ Opening the **teamviewer15_logfile.log** file and searching for the term *punch 
 
 ---
 
-10. The attacker brought some tools to the compromised workstation to achieve its objectives. Under which path were these tools staged?
+**10. The attacker brought some tools to the compromised workstation to achieve its objectives. Under which path were these tools staged?**
 
 Further analyzing the TeamViewer logs, we can see the attack staging activity:
 ```
@@ -191,7 +192,7 @@ Further analyzing the TeamViewer logs, we can see the attack staging activity:
 
 ---
 
-11. The attacker staged a browser credential harvesting tool on the compromised system. How long did this tool run before it was terminated? (Provide your answer in milliseconds, rounded to the nearest thousand)
+**11. The attacker staged a browser credential harvesting tool on the compromised system. How long did this tool run before it was terminated? (Provide your answer in milliseconds, rounded to the nearest thousand)**
 
 Using a Windows machine, run the [**Registry Explorer**](https://ericzimmerman.github.io/) tool to examine the SOFTWARE registry hive found in the Triage_Image\C\Windows\System32\config directory. We can find out how long the credential harvester ran by looking in the key **Software\Microsoft\Windows\CurrentVersion\Explorer\UserAssist**. The program name is WebBrowserPassView.exe and its focus time (time the window was the active and in the foreground) is listed as 8 seconds. Converting this to milliseconds gives us our answer.
 
@@ -201,7 +202,7 @@ Using a Windows machine, run the [**Registry Explorer**](https://ericzimmerman.g
 
 ---
 
-12. The attacker executed an OS Credential dumping tool on the system. When was the tool executed?
+**12. The attacker executed an OS Credential dumping tool on the system. When was the tool executed?**
 
 To answer this question we have to first use [**MTFCmd**](https://ericzimmerman.github.io/) on a Windows machine to parse the $J file inside the TRIAGE_IMAGE:
 ```
@@ -220,7 +221,7 @@ The credential dumping tool is **mimikatz** and we can determine when it execute
 
 ---
 
-13. The attacker exfiltrated multiple sensitive files. When did the exfiltration start? (UTC)
+**13. The attacker exfiltrated multiple sensitive files. When did the exfiltration start? (UTC)**
 
 We can see file exfiltration activity in the **TeamViewer15_logfile.log** file:
 ```
@@ -240,7 +241,7 @@ After converting the log's time zone to UTC, we have the time that exfiltration 
 
 ---
 
-14. Before exfiltration, several files were moved to the staged folder. When was the Heisen-9 facility backup database moved to the staged folder for exfiltration?
+**14. Before exfiltration, several files were moved to the staged folder. When was the Heisen-9 facility backup database moved to the staged folder for exfiltration?**
 
 Once again consult the **Timeline Explorer**, this time looking for the FileCreate event for the Heisen-9 remote snapshot.kdbx.
 
@@ -250,7 +251,7 @@ Once again consult the **Timeline Explorer**, this time looking for the FileCrea
 
 ---
 
-15. When did the attacker access and read a txt file, which was probably the output of one of the tools they brought, due to the naming convention of the file?
+**15. When did the attacker access and read a txt file, which was probably the output of one of the tools they brought, due to the naming convention of the file?**
 
 Here we can use the tool [**LECmd**](https://ericzimmerman.github.io/#forensic-tools) to analyze the dump.lnk file which most likely contains the access time of dump.txt.
 
@@ -267,7 +268,7 @@ The time of file access can be found under **Target accessed**.
 
 ---
 
-16. The attacker created a persistence mechanism on the workstation. When was the persistence setup?
+**16. The attacker created a persistence mechanism on the workstation. When was the persistence setup?**
 
 Use the Registry Explorer to now pivot to examining the SOFTWARE registry hive and open the **Available bookmarks** tab. We can see there are 32 values for **Winlogon** worth looking into.
 
@@ -281,7 +282,7 @@ The time of persistence setup is the **Last write timestamp** of the key Winlogo
 
 ---
 
-17. What is the MITRE ID of the persistence subtechnique?
+**17. What is the MITRE ID of the persistence subtechnique?**
 
 Modifying the Userinit registry key falls under the **Boot or Logon Autostart Execution** technique, while the subtechnique is **Winlogon Helper DLL**. This maps to [T1547.004](https://attack.mitre.org/techniques/T1547/004/).
 
@@ -289,7 +290,7 @@ Modifying the Userinit registry key falls under the **Boot or Logon Autostart Ex
 
 ---
 
-18. When did the malicious RMM session end?
+**18. When did the malicious RMM session end?**
 
 This can be found in two places: teamview15_Logfile.log and Connections_incoming.txt.
 
@@ -309,7 +310,7 @@ In **Connections_incoming.txt**, the start and end times of remote control sessi
 
 ---
 
-19. The attacker found a password from exfiltrated files, allowing him to move laterally further into CogWork-1 infrastructure. What are the credentials for Heisen-9-WS-6?
+**19. The attacker found a password from exfiltrated files, allowing him to move laterally further into CogWork-1 infrastructure. What are the credentials for Heisen-9-WS-6?**
 
 I used a Linux machine, along with [john](https://www.kali.org/tools/john/) and [keepass](https://keepassxc.org/) to solve this task.
 
