@@ -8,7 +8,8 @@
 The tower’s lens, once clear for stargazing, was now veiled in thick mist. Merrin, a determined forensic investigator, climbed the spiraling stairs of Egrath’s Hollow. She found her notes strangely rearranged, marked with unknown signs. The telescope had been deliberately turned downward, focused on the burial grounds. The tower had been occupied after a targeted attack. Not a speck of dust lay on the glass, something unseen had been watching. What it witnessed changed everything. Can you help Merrin piece together what happened in the Watchtower of Mists?
 
 **Skills learned:**
-* Network traffic analysis
+* Network traffic analysis with Wireshark to identify exploitation of a LangFlow RCE vulnerability
+* Using CyberChef to decode and uncover an attacker's persistence mechanisms
 
 **File attachment(s):**
 ```text
