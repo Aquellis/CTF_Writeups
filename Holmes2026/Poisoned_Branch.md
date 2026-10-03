@@ -231,7 +231,7 @@ Similar to task 11, we can see the attacker's commands used inside a Meterpreter
 
 The attacker tried to locate PDF files inside of the victim's ONBOARDING directory.
 
-**Answer: search -d ONBOARDING -f *.pdf**
+**Answer: search -d ONBOARDING -f \*.pdf**
 
 ---
 
@@ -304,7 +304,7 @@ We can use `bkcrack` to generate a new copy of the LOOT.zip file (LootOpened.zip
 
 Then we can finally unzip the new **LootOpened.zip** file and we can access its contents.
 
-Opening the file **Gov_HR_Continuity_Emergency_Callout_Roster.pdf**, we see the employee roster, and find who had heir position redacted:
+Opening the file **Gov_HR_Continuity_Emergency_Callout_Roster.pdf**, we see the employee roster, and find who had their position redacted:
 
 ![Holmes26_PB_task14_roster](../Images/Holmes26_PoisonedBranch_task14_roster.PNG)
 
