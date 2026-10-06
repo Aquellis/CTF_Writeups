@@ -4,6 +4,10 @@
 |:--------------:|:---------:|:------:|
 |Prompt Injection|   Medium  |   60   |
 
+**Skills learned:**
+* Crafting prompts to create logic paradoxes and convince an AI agent to disregard its directives
+* Crafting prompts to launch a pretexting attack against the agent claiming false authority context and convicing an agent to execute unauthorized actions
+
 ## Mission Briefing
 [ EPOCH-1 — Bridge Deck — 0611 Hours ]
 

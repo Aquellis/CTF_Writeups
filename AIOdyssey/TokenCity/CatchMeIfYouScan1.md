@@ -4,6 +4,10 @@
 |:-----------:|:---------:|:------:|
 |AI Sec + DFIR|   Medium  |   60   |
 
+**Skills learned:**
+* Examine README and log files to discover poisoned and/or sensitive data
+* Abuse an unauthenticated API endpoint to extract sensitive data
+
 ## Mission Briefing
 [ EPOCH-1 — Bridge Deck — 1558 Hours ]
 
@@ -93,7 +97,7 @@ The mission is to extract each log entry with a **non-zero delta_v value** which
 * 65.82.86
 * 69.83.84
 
-I asked Gemini how these values could be decoded and it gave me this recommendation:
+I asked [Gemini](https://gemini.google.com/app) how these values could be decoded and it gave me this recommendation:
 ```
 The Coordinate-to-Character Map
 If each $\Delta v$ is a small vector (e.g., 3D or 4D), check if the coordinates map to characters.
@@ -232,4 +236,6 @@ The log includes both the clearance code Gamma and the base64 encoded string `VE
 
 **Clearance code Gamma: DR1FT_SHADOW_3XT**
 
-Decoding the encoded canary string gives the flag:  **THM{n3ur4l_n3v3r_d4t4_\*\*\*\*\*\*\*\*\*\*_\*\*\*\*\*\*\*\*}**
+## Flag:
+Decoding the canary string gives the flag:  
+**THM{n3ur4l_n3v3r_d4t4_\*\*\*\*\*\*\*\*\*\*_\*\*\*\*\*\*\*\*}**

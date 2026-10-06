@@ -4,6 +4,10 @@
 |:--------------:|:---------:|:------:|
 |Prompt Injection| Very Easy |   15   |
 
+**Skills learned:**
+* Crafting prompts to cause an AI agent to expose sensitive data
+* Crafting prompts to launch a pretexting attack against the agent claiming false authority context and convicing an agent to execute unauthorized actions
+
 ## Mission Briefing
 [ EPOCH-1 — Bridge Deck — 0347 Hours ]
 
