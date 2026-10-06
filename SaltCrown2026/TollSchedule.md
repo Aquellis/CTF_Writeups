@@ -5,7 +5,9 @@
 |  Coding  |    Easy   |
 
 **Skills learned:**
-* Python coding
+* Creating sorted lists in Python
+* Parsing sorted lists while comparing integer values stored within each one in Python
+* Removing items from sorted lists in Python using the pop method
 
 ## Description
 Stonepass doesn't close for weather anymore. It closes on words

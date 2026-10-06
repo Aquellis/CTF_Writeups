@@ -1,10 +1,13 @@
 # False Order
-|Category |Difficulty|
-|:-------:|:--------:|
-|  Cloud  |  Medium  |
+
+|Category|Difficulty|
+|:------:|:--------:|
+|  Cloud |  Medium  |
 
 **Skills learned:**
-* AWS CLI
+* Querying AWS S3 buckets for their objects via AWS CLI
+* Querying AWS CloudTrail events via AWS CLI
+* Analyzing AWS CloudTrail events to discover an attacker's full timeline of activity
 
 ## Description
 Caldrin Vowmark reaches an Ashguard checkpoint with a sealed order that tells Stormbound's soldiers to leave the east gate and report to Crownspire. The officer in charge believes the order came from Garran Voss, and he will move his soldiers as soon as the seal is checked. If they leave, Vaultrune can take the gate before help arrives. Caldrin knows Garran's orders carry small marks that copyists miss. He has to inspect the order, show the officer that it is false, and stop the unit from leaving before Vaultrune's soldiers reach the gate.
@@ -56,7 +59,7 @@ We can use S3 to list the contents of the bucket **ashguard-order-custody** and 
 ## Questions
 These questions are to be answered during (and help guide) your investigation.
 
-1. What was the last CloudTrail API action performed from the internal gatehouse IP immediately before the attacker session began?
+**1. What was the last CloudTrail API action performed from the internal gatehouse IP immediately before the attacker session began?**
 
 In order to differentiate between the internal gatehouse session and the attacker's session, we need to look at the **sourceIPAddress** field of events. The internal gatehouse has an **private IP address** while the attacker **does not**. 
 
@@ -94,7 +97,7 @@ The API action can be found in the **EventName** field: `"EventName": "ListObjec
 
 ---
 
-2. What was the first CloudTrail API action called from the attacker IP?
+**2. What was the first CloudTrail API action called from the attacker IP?**
 
 The events discovered in question 1 can help us answer this question also. The CloudTrail API action can be found in the **EventName** field. Answering this correctly also confirms the attacker's IP is: `73.134.114.213`.
 
@@ -102,7 +105,7 @@ The events discovered in question 1 can help us answer this question also. The C
 
 ---
 
-3. Which S3 API action did the attacker attempt that was explicitly denied before assuming a role?
+**3. Which S3 API action did the attacker attempt that was explicitly denied before assuming a role?**
 
 To answer this question, we need to search for events from the sourceIPAddress of `73.134.114.213` that were denied. For every matching event, we need to check for a consecutive event that tried to assume a new user role. 
 
@@ -150,7 +153,7 @@ The API action can be found in the **EventName** field: `"EventName": "GetObject
 
 ---
 
-4. What is the full S3 path of the object that was tampered with? (format s3://bucket/key)
+**4. What is the full S3 path of the object that was tampered with? (format s3://bucket/key)**
 
 In this context, tampering may include editing the object or deleting it entirely. We can search for s3 'put' or 'delete' API actions in the events.
 
@@ -182,7 +185,7 @@ Looking at the **ResourceName** field under the `"ResourceType": "AWS::S3::Objec
 
 ---
 
-5. Which IAM role was assumed for the destructive session? (ARN format)
+**5. Which IAM role was assumed for the destructive session? (ARN format)**
 
 In the DeleteObject event above (which is part of the destructive session), we can see this:
 ```
@@ -195,7 +198,7 @@ The full IAM role is in the **arn** field.
 
 ---
 
-6. What was the full STS principal ARN on the DeleteObject call?
+**6. What was the full STS principal ARN on the DeleteObject call?**
 
 We can continue examining the same **DeleteObject** event to find the full principal ARN. 
 
@@ -207,7 +210,7 @@ We can continue examining the same **DeleteObject** event to find the full princ
 
 ---
 
-7. From which IP address were the AssumeRole and destructive S3 calls performed?
+**7. From which IP address were the AssumeRole and destructive S3 calls performed?**
 
 We can find the IP address from these malicious events occurred from inside the **sourceIPAddress** field. Look at the events from questions 3 and 4 and find the value of this field: `\"sourceIPAddress\":\"198.18.44.91\"`
 
@@ -215,7 +218,7 @@ We can find the IP address from these malicious events occurred from inside the 
 
 ---
 
-8. Which IAM username owns the long-lived credentials used to call AssumeRole?
+**8. Which IAM username owns the long-lived credentials used to call AssumeRole?**
 
 In the same `AssumeRole` event from question 3, we can find the username owning the credentials in the **Username** field: `"Username": "seal-copyist-contractor"`
 
@@ -223,7 +226,7 @@ In the same `AssumeRole` event from question 3, we can find the username owning 
 
 ---
 
-9. Which IAM role name did the attacker fail to assume before the successful AssumeRole? (role name only, not ARN)	
+**9. Which IAM role name did the attacker fail to assume before the successful AssumeRole? (role name only, not ARN)**	
 
 To find this answer, we need to look for `AssumeRole` events that resulted in an error. We find one relevant event:
 ```
@@ -250,7 +253,7 @@ The IAM role name can be found in the **ResourceName** field: `"ResourceName": "
 
 ---
 
-10. What roleSessionName was used on the successful AssumeRole into the scanner role?
+**10. What roleSessionName was used on the successful AssumeRole into the scanner role?**
 
 To find the answer to this question, we must find the successful `AssumeRole` events, but we have to specifically look for the `AssumeRole` event where the **ResourceName** is: `"ResourceName": "arn:aws:iam::638291047582:role/ashguard-order-scanner"`.
 
@@ -279,7 +282,7 @@ The role session name can be found in the **roleSessionName** field: `\"roleSess
 
 ---
 
-11. What errorCode did CloudTrail record on the denied GetObject probe before role assumption?
+**11. What errorCode did CloudTrail record on the denied GetObject probe before role assumption?**
 
 The second event pasted under question 3 is again helpful to answer this question. The error code can be found in the **errorCode** field: `\"errorCode\":\"AccessDenied\",`.
 
@@ -287,7 +290,7 @@ The second event pasted under question 3 is again helpful to answer this questio
 
 ---
 
-12. Which S3 API action name marks the forged ledger upload after DeleteObject?
+**12. Which S3 API action name marks the forged ledger upload after DeleteObject?**
 
 First, we must find the successful `DeleteObject` event and find the event logged immediately after. 
 

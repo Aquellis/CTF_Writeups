@@ -1,10 +1,13 @@
 # False Ferry
-|Category |Difficulty|
-|:-------:|:--------:|
-|  Cloud  |   Easy   |
+
+|Category|Difficulty|
+|:------:|:--------:|
+|  Cloud |   Easy   |
 
 **Skills learned:**
-* AWS CLI
+* Querying AWS Systems Manager (SSM) Parameter Store to uncover stored parameters via AWS CLI
+* Assume a new AWS IAM role using AWS Security Token Service (STS) via AWS CLI
+* Querying AWS S3 buckets for objects and their previous versions via AWS CLI
 
 ## Description
 Lysa Harrowmere reaches the lower city ferry piers while Stormbound soldiers wait for the morning boat. They are supposed to cross the river and guard the east road before Vaultrune's next patrol moves through. The route board says the boat goes to the east road landing, but the crew roster sends it to a dock controlled by Vaultrune. If Lysa warns the soldiers openly, Vaultrune's men can claim she started a fight at the pier. If she confronts the ferry master, his guards can tear down the roster and post the correct one. Lysa has one job: find the earlier crossing list, prove who changed the dock, and get the soldiers onto the right boat before Vaultrune cuts the road.

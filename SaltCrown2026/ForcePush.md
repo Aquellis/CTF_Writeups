@@ -4,7 +4,8 @@
 |Forensics| Very Easy|
 
 **Skills learned:**
-* GitHub repo dump analysis
+* Examining a GitHub repository's commit history
+* Scanning a GitHub repository for unreachable, dangling, or purged objects
 
 ## Description
 We pulled a copy of the `crownspire-deploy` repository off a leaked Cinderbound backup. Word is the production warden's key for the reliquary got committed by mistake and then cleaned up before anyone noticed. The current history looks spotless. Recover what they tried to bury.

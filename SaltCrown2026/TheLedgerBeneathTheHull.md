@@ -1,10 +1,10 @@
 # The Ledger Beneath the Hull
-|Category |Difficulty|
-|:-------:|:--------:|
-|  OSINT  |   Easy   |
+|Category|Difficulty|
+|:------:|:--------:|
+|  OSINT |   Easy   |
 
 **Skills learned:**
-* Cross-referencing data gathered from multiple sources
+* Cross-referencing data gathered from multiple public sources to discover ownership and operations behind a shipping vessel
 
 ## Description
 Lord Damas Marrowcairn does not command fleets — he owns them through a labyrinth of paper. A single cargo vessel, the ASHEN MERCY, sits at the center of a web spun across five companies: a nominee-owned shell that holds the hull, a management firm that runs the machinery, a coordination house that directs the voyages, and a commodities trader that fills the holds. Each layer is clean. Each layer is someone else's name. But every thread, if pulled hard enough, runs back to the same hand. The Outer Isles P&I Club has opened its registry for inspection — registry files, charter fixtures, company ledgers, and P&I entries are all available to those who know where to look. Reconstruct the full ownership chain. Prove that the hand beneath the ink belongs to MarrowcairnUse the Oath Submission form to confirm your findings, then assemble the flag from the verified answers.

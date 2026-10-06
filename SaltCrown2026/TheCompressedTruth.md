@@ -4,7 +4,7 @@
 |Forensics| Very Easy|
 
 **Skills learned:**
-* Windows Registry Analysis
+* Analyzing Windows Registry hives with Registry Explorer to map an attacker's access, data staging, and exfiltration
 
 ## Description
 ASHVAULT was never the destination. It was the key.
@@ -36,7 +36,7 @@ A245ade4-851f-4e47-8d4e-be53d1b81cd4-1784201538.zip
 We see that there are Windows artifacts present (C:\ folder), so I examined this case on a Windows VM. Each user has NTUSER.DAT files that can be examined further using the Registry Explorer tool developed by [Eric Zimmerman](https://ericzimmerman.github.io/).
 
 We already have two clues:
-* A user **vmarr** is involved
+* The user Veylen Marr's **vmarr** identity was stolen and granted an attacker access
 * The tool **7-Zip** was used to compress files 
 
 From here, I began examining vmarr's NTUSER.DAT hive.
@@ -44,7 +44,7 @@ From here, I began examining vmarr's NTUSER.DAT hive.
 ## Questions
 These questions are to be answered during (and help guide) your investigation.
 
-1. CROWQUILL did not break the lock — they took the key while it was still held. A tool was brought for one purpose: extract secrets from memory before they could be put away. What is its name? 
+**1. CROWQUILL did not break the lock — they took the key while it was still held. A tool was brought for one purpose: extract secrets from memory before they could be put away. What is its name?** 
 
 Under the key **Software\7-Zip\Extraction**, we find one value, which points to the path tool used to *extract secrets*: `C:\Users\vmarr\AppData\Local\Temp\writ\KeeFarce\`.
 
@@ -56,7 +56,7 @@ With a quick search, we can find [KeeFarce](https://github.com/denandz/KeeFarce)
 
 ---
 
-2. The Registry keeps time as faithfully as it keeps names. The moment CROWQUILL's tool first touched the system is preserved in the artifact. When was the tool extracted? (YYYY-MM-DD hh:mm:ss)
+**2. The Registry keeps time as faithfully as it keeps names. The moment CROWQUILL's tool first touched the system is preserved in the artifact. When was the tool extracted? (YYYY-MM-DD hh:mm:ss)**
 
 The exact timing can be found under the **last write timestamp** of the key. The Last write timestamp of the **Software\7-Zip\Extraction** key is our answer.
 
@@ -64,7 +64,7 @@ The exact timing can be found under the **last write timestamp** of the key. The
 
 ---
 
-3. One archive file caught the operative's eye during enumeration, its contents inspected before staging began. What is the deepest folder that was enumerated inside the archive file?
+**3. One archive file caught the operative's eye during enumeration, its contents inspected before staging began. What is the deepest folder that was enumerated inside the archive file?**
 
 7-Zip's File Manager (FM) stores user settings, history & paths under the hive key **Software\7-Zip\FM**. Examining this key further, we see the value **FolderHistory** that lists all folders that were enumerated.
 
@@ -76,7 +76,7 @@ The deepest full path enumerated is: `C:\Users\vmarr\Documents\Registry\oath_rec
 
 ---
 
-4. Before exfiltration comes collection — files pulled from their places and gathered where the operative controls. Where did CROWQUILL stage the stolen records?
+**4. Before exfiltration comes collection — files pulled from their places and gathered where the operative controls. Where did CROWQUILL stage the stolen records?**
 
 7-Zip's File Manager tracks the folder locations where files have been copied to inside the `CopyHistory` value. We can assume this directory is where stolen records are being staged.
 
@@ -86,7 +86,7 @@ The deepest full path enumerated is: `C:\Users\vmarr\Documents\Registry\oath_rec
 
 ---
 
-5. The stolen records were compressed and sealed for the journey out — made small enough for channels that do not ask questions. What is the name of the archive prepared for exfiltration?
+**5. The stolen records were compressed and sealed for the journey out — made small enough for channels that do not ask questions. What is the name of the archive prepared for exfiltration?**
 
 Now we pivot to the hive key **Software\7-Zip\Compression** to find out more about what archives were created. In the value `ArcHistory`, we can find the full Archive Name.
 
@@ -96,7 +96,7 @@ Now we pivot to the hive key **Software\7-Zip\Compression** to find out more abo
 
 ---
 
-6. One file above all others — holding keys to every shard, every custodian, every oath. Whoever holds this holds the right to reconstruct authority older than any crown. Where was it stored?
+**6. One file above all others — holding keys to every shard, every custodian, every oath. Whoever holds this holds the right to reconstruct authority older than any crown. Where was it stored?**
 
 This question is hinting at the password manager KeePass we discovered during task 1. Going back to 7-Zip's File Manager FolderHistory, we can search for any relevant directories.
 
@@ -106,7 +106,7 @@ This question is hinting at the password manager KeePass we discovered during ta
 
 ---
 
-7. When staging was complete and the archive sealed, the trail ends in one folder — where enumeration stopped. Where did CROWQUILL conclude their operations while using the 7zip?
+**7. When staging was complete and the archive sealed, the trail ends in one folder — where enumeration stopped. Where did CROWQUILL conclude their operations while using the 7zip?**
 
 7-Zip's File Manager stores the last active directory path in the Registry value `PanelPath0`. Finding this value tells us the folder where enumeration stopped. 
 

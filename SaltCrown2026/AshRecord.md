@@ -5,7 +5,9 @@
 |  Coding  |  Medium  |
 
 **Skills learned:**
-* Python coding
+* Creating sorted lists and sorted tuples in Python
+* Parsing sorted tuples while comparing string values stored within each one in Python
+* Calculating the difference between integers stored in tuples in Python
 
 ## Description
 Aeron's scouts found a riverside hamlet that should have been starving. The
@@ -88,7 +90,7 @@ For each residue in the resList, do two things:
 * Find a tuple where the string residue matches
 * Take the matching timestamp and confirm there is at least a minGap difference between the previous timestamp in the extraction sequence and the current one
 
-Both of these checks must pass in order for number of confirmed extraction sequence steps to be increased. For every confirmed steps, increase the number of valid steps (validSteps).
+Both of these checks must pass in order for number of confirmed extraction sequence steps to be increased. For every confirmed step, increase the number of valid steps (validSteps).
 
 Start the docker container and begin coding in your browser. **Note: The tool's input() function reads the next full line of input.**
 

@@ -4,7 +4,8 @@
 |  Web   | Very Easy|
 
 **Skills learned:**
-* HTTP request manipulation via Burp Suite
+* Analyzing TypeScript code files to understand the application's behavior
+* Using Burp Suite to manipulate request target and cookies of an HTTP request
 
 ## Description
 Lysa Harrowmere reaches Crownspire with proof that a trusted castle informant is selling patrol routes to the enemy. The information is being used to ambush messengers, delay supplies, and keep Stormbound’s allies divided. The only person who can act on the proof is inside the castle for a closed council, but Lysa’s name has been removed from the entry list and the guards have orders to admit no unscheduled visitors. If she waits, the council ends and the traitor disappears with the next route packet. If she speaks openly at the gate, the proof is seized before it reaches the right hands. Lysa must trick the guarded passage, get inside, and place the evidence with the one ally who can expose the leak before the enemy moves again.

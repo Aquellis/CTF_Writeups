@@ -4,7 +4,8 @@
 |  Cloud  |   Easy   |
 
 **Skills learned:**
-* AWS CLI
+* Querying AWS CloudTrail events via AWS CLI
+* Analyzing AWS CloudTrail events to discover an attacker's full timeline of activity
 
 ## Description
 Elric Ashspar finds a seizure stamp in a dead clerk's bag near Stonepass. Vaultrune uses copies of that stamp to take supplies from Sythra's border guards, leaving a road Stormbound needs open without them. The stamp looks old, but Elric spots fresh tool marks on it. He must find the flaw, prove the stamp is fake, and give the guards a quick way to reject future copies.
@@ -26,7 +27,7 @@ However, we can use CloudTrail to list captured events `aws cloudtrail lookup-ev
 ## Questions
 These questions are to be answered during (and help guide) your investigation.
 
-1. What was the last CloudTrail API action performed by the compromised user from the internal IP immediately before the attacker session began?
+**1. What was the last CloudTrail API action performed by the compromised user from the internal IP immediately before the attacker session began?**
 
 Examining the cloudtrail events, we can see which events came from the compromised user based on the **sourceIPAddress** field. The user has an private IP address, while the attacker does not.
 
@@ -52,7 +53,7 @@ The compromised user's last API action before the attacker's session can be foun
 
 ---
 
-2. What was the first CloudTrail API action called from the attacker IP?
+**2. What was the first CloudTrail API action called from the attacker IP?**
 
 The attacker's first API action occurs shortly after the event from question 1. The event includes:
 ```
@@ -76,7 +77,7 @@ The attacker's first API action occurs shortly after the event from question 1. 
 
 ---
 
-3. Which API action did the attacker attempt that was explicitly denied before the trail was stopped?
+**3. Which API action did the attacker attempt that was explicitly denied before the trail was stopped?**
 
 We can determined which API action was denied based on events from the attacker's IP address that may include **errors**.
 
@@ -89,7 +90,7 @@ The relevant event includes:
 
 ---
 
-4. Which S3 bucket did the attacker enumerate before stopping the trail?
+**4. Which S3 bucket did the attacker enumerate before stopping the trail?**
 
 We can filter down all cloudtrail events related to S3 buckets by looking at the **ResourceType** field. We want to look at events with this ResourceType of **AWS::S3::Bucket**.
 
@@ -119,7 +120,7 @@ The S3 bucket enumeration includes this event:
 
 ---
 
-5. What is the name of the CloudTrail trail that was stopped?
+**5. What is the name of the CloudTrail trail that was stopped?**
 
 We can see the stopped trail by searching the events for the phrase **stop**. That points us to one event, which includes:
 ```
@@ -143,7 +144,7 @@ We can see the stopped trail by searching the events for the phrase **stop**. Th
 
 ---
 
-6. Which IAM username's credentials were used to execute the trail disable?
+**6. Which IAM username's credentials were used to execute the trail disable?**
 
 We can determine which IAM username executed the trail disable inside the **Username** field of the log event from question 5.
 
@@ -151,7 +152,7 @@ We can determine which IAM username executed the trail disable inside the **User
 
 ---
 
-7. From which IP address was the trail disabled?
+**7. From which IP address was the trail disabled?**
 
 We can determine which IP address that executed the trail disable inside the **sourceIPAddress** field of full `CloudTrailEvent` listing from the same event.
 
@@ -163,7 +164,7 @@ We can determine which IP address that executed the trail disable inside the **s
 
 ---
 
-8. Which API action was used to disable the audit trail?
+**8. Which API action was used to disable the audit trail?**
 
 We can find the API action inside the **EventName** field of the log event mentioned in questions 5-7.
 

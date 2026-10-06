@@ -4,6 +4,10 @@
 |:--------:|:---------:|
 |  Coding  | Very Easy |
 
+**Skills learned:**
+* Creating and updating lists of integers in Python
+* Using list indexing to obtain values at given indexes in Python
+
 ## Description
 The Drowned Bell doesn't ask questions — which is exactly why Ferro Quicktongue runs his nightly game there. Three dented tankards, one bent copper chit, and a room full of off-duty gate clerks who really ought to know better than to bet against a man whose hands move faster than his mouth. Half the tavern is three mugs deep and hollering wagers by the time Rin Kagetsura wanders in, off duty and not remotely interested in Ferro's game. What catches Rin's eye is the table by the door, where a courier is running the exact same swap-and-shuffle — except the thing sliding under those tankards isn't a copper chit, it's a folded scrap bound for someone at Suncourt, and the courier is betting that nobody in a room this drunk is actually watching the cups. Rin is watching. Every swap happens in plain sight, same as Ferro's — the only question left is which tankard the message is sitting under once the shuffling finally stops. A handful of patrons had already marked which tankard they were following before the swapping started, chasing their own side bets on where their cup would land. Rin doesn't care about their coin — but working out where every marked tankard actually ends up, theirs included, is the only way to know which one held the real message.
 
@@ -57,9 +61,6 @@ position 5. The swap (3,5) moves it to position 3, and the final swap
 Final positions: the item that started at 3 ends at 4; the item that
 started at 5 ends at 3.
 ```
-
-**Skills learned:**
-* Python coding
 
 ## Logic
 I solved this problem by creating and maintaining two lists:

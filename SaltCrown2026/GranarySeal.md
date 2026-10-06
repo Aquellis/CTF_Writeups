@@ -4,7 +4,8 @@
 |  Coding  | Very Easy |
 
 **Skills learned:**
-* Python coding
+* Creating and appending values to lists in Python
+* Parsing lists and comparing values using conditional statements in Python
 
 ## Description
 The palace granaries are the last thing standing between Crownspireand open starvation. Every ration order that reaches the gatehouse passesthrough three hands: the clerk who raises it, the countersigner who clears it, and the courier who carries it. Lysa Harrowmere keeps a custody roll for each of the three roles — the hands the gatehouse has actually watched work, entry by entry, over seasons of ordinary orders. Since the Signet shattered, forged orders have been slipping through on habit alone: clean wax, an eager countersign, a courier too calm for a crisis. The fakes are good, but never perfect — a hand that has never touched the roll, a clerk standing where a countersigner belongs, a courier no custody entry has ever named. Lysa needs a count of how many orders in the current batch survive the old sequence: every hand present, every hand where it belongs.

@@ -4,7 +4,7 @@
 |  OSINT  | Very Easy|
 
 **Skills learned:**
-* Using available data sources to extract information
+* Using publicly vailable data sources to extract information about an aircraft
 
 ## Description
 Suncourt keeps its messengers arriving without looking like messengers — a private aircraft leaves records no one thinks to compare. On the night before three Registry witnesses changed their testimony, a dark executive aircraft slipped into Crownspire Executive Field under a sealed passenger list. But the dispatch slip and fuel sheet were not sealed: a gate clerk copied the aircraft's Mode-S hex 43E91C and its callsign VLR602. Miren Vale, the Aerial Witness Desk's analyst, suspects the same flight was recorded twice — once in the sky under its callsign, once on the

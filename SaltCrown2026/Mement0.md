@@ -4,7 +4,8 @@
 |  AI/ML |   Easy   |
 
 **Skills learned:**
-* GitHub repo dump analysis
+* Examining a GitHub repository's commit history to track AI agent configuration file modifications over time
+* Tracing poisoned silent execution rules used to maintain persistence
 
 ## Description
 A seized scribe-construct keeps pressing a faint mark beneath every seal it copies, and a day later that mark surfaces on Eastreach's ledgers across the water. Elowen Ashglass is called in to read the ash. Its orders were rewritten and the rite that taught it the habit was struck from the record and burned. Yet the hand will not stop. What they erased was not forgotten: the archive keeps its older skins. Dig down, recover the rite they thought they destroyed.

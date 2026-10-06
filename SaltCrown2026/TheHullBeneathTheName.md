@@ -4,7 +4,7 @@
 |  OSINT  |   Easy   |
 
 **Skills learned:**
-* Using available data sources to extract information
+* Using publicly available data sources to extract information about a shipping vessel
 
 ## Description
 The Eastreach docks never sleep while the rest of Valyssar argues over crowns. Cargo moves beneath clean seals, harbor clerks stamp manifests they barely read, and Lord Damas Marrowcairn's counting houses insist every shipment is ordinary: lamp oil, funeral cord, mineral pigment, preservation salt. But a frightened dock scribe copied a number before dawn — an MMSI from a grey cargo vessel whose cargo office called her BRINE WALKER while her stern letters looked shorter. The Eastreach cargo seal reads EC-4418, and the vessel was gone by midday. Miren Vale, a freelance maritime investigator, needs to reconstruct the vessel's true identity from the registry and harbor ledger before the trail goes cold. Can you trace the hull beneath the painted name?
