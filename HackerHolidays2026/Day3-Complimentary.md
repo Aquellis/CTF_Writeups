@@ -5,7 +5,9 @@
 | Cloud  |   Easy   |
 
 **Skills learned:**
-* Navigating and accessing cloud resources via AWS CLI
+* Analyzing JavaScript code files to understand the application's behavior
+* Acquiring temporary credentials from AWS Cognito via AWS CLI
+* Reading every item in a DynamoDB table via AWS CLI
 
 ## Concierge Briefing
 Lambo installed the Byte Lotus Wellness app the day she arrived — it was free, it had great reviews (written by the app, but she didn't check), and it got her a tote bag for saying yes to camera, mic, contacts, and location access. No account needed. No login screen. It just… knows things about you the moment you open it.

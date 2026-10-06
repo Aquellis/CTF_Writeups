@@ -5,8 +5,11 @@
 | Cloud  |  Medium  |
 
 **Skills learned:**
+* Analyzing JavaScript code files to understand an application's behavior
 * Azure CLI installation and configuration
-* Azure CLI commands to access cloud resources
+* Access and download blobs stored in Azure Storage containers
+* Log in as a service account using Azure CLI
+* Obtain secrets (and their previous versions) from an Azure Key Vault via Azure CLI
 
 ## Concierge Briefing
 By the time he made it back from the breakfast buffet, his wallet had already moved on without him. The transaction was signed, properly signed, just not by him.

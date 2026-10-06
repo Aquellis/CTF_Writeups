@@ -6,7 +6,7 @@
 
 **Skills learned:**
 * Scanning a remote host with Nmap
-* Exploiting a Zip Slip vulnerability to spawn a reverse shell
+* Use a Python script to exploit a Zip Slip vulnerability and spawn a reverse shell
 
 ## Concierge Briefing
 You find it on the beach: pretty, ordinary, the kind of thing nobody thinks to check. Slip something inside and hold it to your ear.

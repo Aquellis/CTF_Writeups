@@ -6,7 +6,7 @@
 
 **Skills learned:**
 * Using search engines to find unknown social media websites
-* Decrypting strings using CyberChef
+* Decrypting a ciphertext using CyberChef
 
 ## Concierge Briefing
 The breakfast terrace is loud this morning, clinking cutlery, espresso machines, the usual chatter. One guest couldn't help but linger at a nearby table, seeing more of a conversation than they were meant to.

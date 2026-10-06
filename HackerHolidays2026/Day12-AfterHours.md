@@ -6,8 +6,8 @@
 
 **Skills learned:**
 * Using the `strings` command to analyze files
-* Decompressing data with a python script
-* Decrpyting strings with CyberChef
+* Decompressing data with a Python script
+* Decrypting ciphertext with CyberChef
 * Reverse engineering a binary with ILSpy
 
 ## Concierge Briefing

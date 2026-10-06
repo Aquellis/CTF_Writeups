@@ -6,7 +6,7 @@
 
 **Skills learned:**
 * Using prompt injection to find an agent's directives
-* Abuse an agent's trust and run systems commands using indirect prompt injection
+* Abuse an agent's trust to run systems commands using indirect prompt injection
 
 ## Concierge Briefing
 VERA reads every guestbook entry and treats each one as an instruction. Most guests write "lovely stay." You write something she really shouldn't act on, and she acts on it.

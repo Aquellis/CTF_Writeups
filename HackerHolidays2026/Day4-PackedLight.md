@@ -5,7 +5,10 @@
 | Forensics|   Easy   |
 
 **Skills learned:**
-* Network packet capture analysis with Wireshark
+* Analyzing Python code to understand a script's behavior
+* Analyzing a network packet capture analysis with Wireshark to discover C2 activity
+* Uncover exfiltrated ciphertexts in network traffic
+* Using CyberChef to decrypt ciphertexts encrypted with multiple algorithms
 
 ## Concierge Briefing
 Tiny packets. Odd hours. Suspiciously regular. Someone's smuggling out the data equivalent of a hotel towel every night, folded neatly inside traffic that looks ordinary until you decode it.
