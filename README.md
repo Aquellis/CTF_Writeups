@@ -1,6 +1,7 @@
 # CTF Writeups :triangular_flag_on_post:
 
 These are the writeups for the challenges I have completed in the following CTFs:
+* [It's Downtime!](/ItsDowntime2026/README.md) (TryHackMe)
 * [Holmes CTF 2026: The Reichenback Directive](/Holmes2026/README.md) (Hack The Box)
 * [Hacker Holidays 2026](/HackerHolidays2026/README.md) (TryHackMe)
 * [Cyber Apocalypse CTF 2026: The Salt Crown](/SaltCrown2026/README.md) (Hack The Box)
